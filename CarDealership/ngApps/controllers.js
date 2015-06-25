@@ -28,13 +28,16 @@
             origional.fullDescription = car.fullDescription;
             origional.$save();
         }
+    });
+    angular.module('CarApp').controller('CarDeleteController', function (CAR_API, $resource, $location, $routeParams) {
+        var self = this;
+        var Car = $resource(CAR_API);
+        self.car = Car.get({id:$routeParams.id});
 
-        self.deleteCar = function (origional) {
-            origional.$remove({ id: origional.id }, function () {
-                self.cars = self.cars.filter(function (item) {
-                    return origional.id != item.id;
-                });
-            })
+        self.deleteCar = function () {
+            Car.remove({ id: $routeParams.id }, function () {
+                $location.path('/');
+            });
         }
     });
 })();

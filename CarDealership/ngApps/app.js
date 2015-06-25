@@ -16,7 +16,7 @@
                     controllerAs: 'main'
                 })
                 .when('/deleteCar/:id', {
-                    controller: 'CarListController',
+                    controller: 'CarDeleteController',
                     templateUrl: '/Partials/deleteCar.html',
                     controllerAs: 'main'
                 })

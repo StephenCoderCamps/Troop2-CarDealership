@@ -40,6 +40,13 @@ namespace CarDealership.API
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState);
         }
 
+
+        public Car GetCar(int id)
+        {
+            return _db.Cars.Find(id);
+        }
+
+
         public void Delete(int id)
         {
             var original = _db.Cars.Find(id);

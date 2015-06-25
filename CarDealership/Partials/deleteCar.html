@@ -2,23 +2,18 @@
     <div class="container">
 
         <div>
-            <label> Make </label>
+            {{main.car.Make}}
         </div>
         <div>
-            <label> Model </label>
+            {{main.car.Model}}
         </div>
         <div>
-            <label> Price </label>
+            {{main.car.Price}}
         </div>
         <div>
-            <label> Picture </label>
+            <img ng-src="{{main.car.Picture}}" />
         </div>
-        <div>
-            <label> Brief Description </label>
-        </div>
-        <div>
-            <label> Full Description </label>
-         </div>
+         
         <h1>Delete this car?</h1>
         <input type="submit" value="Delete" />
     </div>
