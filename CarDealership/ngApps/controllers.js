@@ -19,15 +19,21 @@
             });
         }
 
-        self.editCar = function (origional) {
-            origional.make = car.make;
-            origional.model = car.model;
-            origional.price = car.price;
-            origional.picture = car.picture;
-            origional.briefDescription = car.briefDescription;
-            origional.fullDescription = car.fullDescription;
-            origional.$save();
+        self.editCar = function (original) {
+            original.make = car.make;
+            original.model = car.model;
+            original.price = car.price;
+            original.picture = car.picture;
+            original.briefDescription = car.briefDescription;
+            original.fullDescription = car.fullDescription;
+            original.$save();
         }
+        self.filterCars = function (car) {
+            if (!self.search) {
+                return true;
+            };
+            return car.model.toLowerCase().startsWith(self.search.toLowerCase()) || car.make.toLowerCase().startsWith(self.search.toLowerCase());
+        };
     });
     angular.module('CarApp').controller('CarDeleteController', function (CAR_API, $resource, $location, $routeParams) {
         var self = this;
@@ -39,5 +45,16 @@
                 $location.path('/');
             });
         }
+    });
+    angular.module('CarApp').controller('CarEditController', function (CAR_API, $resource, $location, $routeParams) {
+        var self = this;
+        var Car = $resource(CAR_API);
+        self.car = Car.get({ id: $routeParams.id });
+
+        self.editCar = function () {
+            self.car.$save(function () {
+                $location.path('/');
+            });
+        };
     });
 })();

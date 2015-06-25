@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="CarApp" >
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="CarApp">
 
 <head>
     <title></title>
@@ -11,60 +11,13 @@
 
 <body ng-controller="CarListController as main">
 
-    <a href="/listCar"> Home </a>
-    <br />
-    <a href="/addCar"> Add Car </a>
-    @*<br />
-    <a href="/deleteCar"> Delete Car </a>
-    <br />
-    <a href="/editCar"> Edit Car </a>*@
-    
-    <div ng-view></div>
 
-
-    @*<div class="container">
-        <h2>Showroom</h2>
-        <table ng-cloak="true" class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>
-                        Make
-                    </th>
-                    <th>
-                        Model
-                    </th>
-                    <th>
-                        Price
-                    </th>
-                    <th>
-                        Picture
-                    </th>
-                    <th>
-                        Brief Description
-                    </th>
-                    <th>
-                        Full Description
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="car in main.cars">
-                    <td><a href="/deleteCar">Delete</a></td>
-                    <td><a href="/editCar">Edit</a></td>
-                    <td>{{car.Make}}</td>
-                    <td>{{car.Model}}</td>
-                    <td>{{car.Price|currency}}</td>
-                    <td><img ng-src="{{car.Picture}}" /></td>
-                    <td>{{car.BriefDescription}}</td>
-                    <td>{{car.FullDescription}}</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>*@
+    <div class="container">
+        <a href="/listCar"> Home </a>
+        <br />
+        <a href="/addCar"> Add Car </a>
+        <div ng-view></div>
+    </div>
 
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>

@@ -1,35 +1,30 @@
-﻿<form>
+﻿<form ng-submit="main.editCar()">
     <div class="container">
 
         <div>
             <h1>Edit Car Page</h1>
             <label> Make </label>
-            <input ng-model="main.editCar.make" />
+            <input ng-model="main.car.make" />
         </div>
         <div>
-            <h1>Add Car Page</h1>
             <label> Model </label>
-            <input ng-model="main.editCar.model" />
+            <input ng-model="main.car.model" />
         </div>
         <div>
-            <h1>Add Car Page</h1>
             <label> Price </label>
-            <input ng-model="main.editCar.price" />
+            <input ng-model="main.car.price" />
         </div>
         <div>
-            <h1>Add Car Page</h1>
             <label> Picture </label>
-            <input ng-model="main.editCar.picture" />
+            <input ng-model="main.car.picture" />
         </div>
         <div>
-            <h1>Add Car Page</h1>
             <label> Brief Description </label>
-            <input ng-model="main.editCar.briefDescription" />
+            <input ng-model="main.car.briefDescription" />
         </div>
         <div>
-            <h1>Add Car Page</h1>
             <label> Full Description </label>
-            <input ng-model="main.editCar.fullDescription" />
+            <input ng-model="main.car.fullDescription" />
         </div>
 
         <input type="submit" value="Save" />

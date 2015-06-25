@@ -21,7 +21,7 @@
                     controllerAs: 'main'
                 })
                 .when('/editCar/:id', {
-                    controller: 'CarListController',
+                    controller: 'CarEditController',
                     templateUrl: '/Partials/editCar.html',
                     controllerAs: 'main'
                 })
