@@ -233,6 +233,9 @@
     <Content Include="ngApps\app.js" />
     <Content Include="ngApps\controllers.js" />
     <Content Include="ngApps\services.js" />
+    <Content Include="Partials\addCar.html" />
+    <Content Include="Partials\deleteCar.html" />
+    <Content Include="Partials\editCar.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
