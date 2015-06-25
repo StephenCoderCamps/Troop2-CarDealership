@@ -38,7 +38,7 @@
     angular.module('CarApp').controller('CarDeleteController', function (CAR_API, $resource, $location, $routeParams) {
         var self = this;
         var Car = $resource(CAR_API);
-        self.car = Car.get({id:$routeParams.id});
+        self.car = Car.get({ id: $routeParams.id });
 
         self.deleteCar = function () {
             Car.remove({ id: $routeParams.id }, function () {
@@ -56,5 +56,22 @@
                 $location.path('/');
             });
         };
+
+    });
+    angular.module('CarApp').controller('LoginController', function ($location, $http) {
+        var self = this;
+        self.login = function () {
+            var data = "grant_type=password&username=" + self.loginName + "&password=" + self.loginPassword;
+
+            $http.post('/Token', data,
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            },
+            function (result) {
+                debugger
+            });
+        }
+
+
     });
 })();

@@ -1,10 +1,13 @@
 namespace CarDealership.Migrations
 {
     using CarDealership.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using System.Security.Claims;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CarDealership.Models.ApplicationDbContext>
     {
@@ -31,7 +34,21 @@ namespace CarDealership.Migrations
                new Car {Make="BMW", Model="540i", Price= 80000, Picture="http://i.telegraph.co.uk/multimedia/archive/03034/bmw-2-series-cabri_3034866b.jpg", BriefDescription="TDB", FullDescription="TBDFULL"}
             };
 
-            context.Cars.AddOrUpdate(c => c.Make, cars);
+            context.Cars.AddOrUpdate(c => new{c.Make, c.Model, c.Price}, cars);
+
+            var user = new ApplicationUser
+            {
+                UserName = "StephenW",
+                Email = "stephen.walther@codercamps.com"
+            };
+
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new ApplicationUserManager(userStore);
+
+            if (userManager.FindByName(user.UserName) == null) {
+                userManager.Create(user, "Secret123!");
+                userManager.AddClaim(user.Id, new Claim("CanEditCars", "true"));
+            }
         }
     }
 }

@@ -25,6 +25,11 @@
                     templateUrl: '/Partials/editCar.html',
                     controllerAs: 'main'
                 })
+                .when('/loginPage', {
+                    controller: 'LoginController',
+                    templateUrl: '/Partials/loginPage.html',
+                    controllerAs: 'main'
+                })
                 .otherwise({ redirectTo: '/' });
 
             $locationProvider.html5Mode(true);
