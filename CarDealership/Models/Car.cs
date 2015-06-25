@@ -9,7 +9,9 @@ namespace CarDealership.Models
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public string Make { get; set; }  // renamed Title  added Model so we can sort on make and model
+
+        public string Model { get; set; }
 
         public decimal Price { get; set; }
 

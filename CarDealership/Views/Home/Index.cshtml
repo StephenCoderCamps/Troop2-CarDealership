@@ -14,7 +14,10 @@
             <thead>
                 <tr>
                     <th>
-                        Title
+                        Make
+                    </th>
+                    <th>
+                        Model
                     </th>
                     <th>
                         Price
@@ -32,7 +35,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="car in main.cars">
-                    <td>{{car.Title}}</td>
+                    <td>{{car.Make}}</td>
+                    <td>{{car.Model}}</td>
                     <td>{{car.Price|currency}}</td>
                     <td><img ng-src="{{car.Picture}}" /></td>
                     <td>{{car.BriefDescription}}</td>
