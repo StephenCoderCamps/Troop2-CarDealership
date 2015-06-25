@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    angular.module('CarApp').controller('CarListController', function (CAR_API, $resource) {
+    angular.module('CarApp').controller('CarListController', function (CAR_API, $resource, $location) {
         var self = this;
         var Car = $resource(CAR_API);
         self.cars = Car.query();
@@ -15,7 +15,7 @@
                 FullDescription: self.newCar.fullDescription
             });
             newCar.$save(function (result) {
-                self.cars.push(result);
+                $location.path('/');
             });
         }
 

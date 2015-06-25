@@ -1,0 +1,48 @@
+﻿    <div class="container">
+    <h2>Showroom</h2>
+    <table ng-cloak="true" class="table table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Picture
+                </th>
+                <th>
+                    Brief Description
+                </th>
+                <th>
+                    Full Description
+                </th>
+                <th>
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="car in main.cars">
+                <td>{{car.Make}}</td>
+                <td>{{car.Model}}</td>
+                <td>{{car.Price|currency}}</td>
+                <td><img ng-src="{{car.Picture}}" /></td>
+                <td>{{car.BriefDescription}}</td>
+                <td>{{car.FullDescription}}</td>
+                <td>
+                    <a href="/deleteCar/{{car.Id}}">Delete</a>
+                    <br />
+                    <a href="/editCar/{{car.Id}}">Edit</a>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

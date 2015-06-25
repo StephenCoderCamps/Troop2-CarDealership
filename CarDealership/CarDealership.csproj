@@ -236,6 +236,7 @@
     <Content Include="Partials\addCar.html" />
     <Content Include="Partials\deleteCar.html" />
     <Content Include="Partials\editCar.html" />
+    <Content Include="Partials\listCars.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />

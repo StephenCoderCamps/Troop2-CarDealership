@@ -1,14 +1,28 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="CarApp">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="CarApp" >
+
 <head>
     <title></title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <base href="/" />
 </head>
 
 
 <body ng-controller="CarListController as main">
 
-    <div class="container">
+    <a href="/listCar"> Home </a>
+    <br />
+    <a href="/addCar"> Add Car </a>
+    @*<br />
+    <a href="/deleteCar"> Delete Car </a>
+    <br />
+    <a href="/editCar"> Edit Car </a>*@
+    
+    <div ng-view></div>
+
+
+    @*<div class="container">
         <h2>Showroom</h2>
         <table ng-cloak="true" class="table table-responsive">
             <thead>
@@ -35,6 +49,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="car in main.cars">
+                    <td><a href="/deleteCar">Delete</a></td>
+                    <td><a href="/editCar">Edit</a></td>
                     <td>{{car.Make}}</td>
                     <td>{{car.Model}}</td>
                     <td>{{car.Price|currency}}</td>
@@ -48,7 +64,7 @@
 
         </table>
 
-    </div>
+    </div>*@
 
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
