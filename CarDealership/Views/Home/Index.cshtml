@@ -1,0 +1,57 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="CarApp">
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+
+
+<body ng-controller="CarListController as main">
+
+    <div class="container">
+        <h2>Showroom</h2>
+        <table ng-cloak="true" class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Picture
+                    </th>
+                    <th>
+                        Brief Description
+                    </th>
+                    <th>
+                        Full Description
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="car in main.cars">
+                    <td>{{car.Title}}</td>
+                    <td>{{car.Price|currency}}</td>
+                    <td><img ng-src="{{car.Picture}}" /></td>
+                    <td>{{car.BriefDescription}}</td>
+                    <td>{{car.FullDescription}}</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/ngApps/app.js"></script>
+    <script src="~/ngApps/controllers.js"></script>
+    <script src="~/ngApps/services.js"></script>
+</body>
+</html>
