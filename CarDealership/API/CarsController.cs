@@ -15,14 +15,22 @@ namespace CarDealership.API
 
         public IList<Car> GetCars()
         {
-            // need to logout/login again to load claims
-            var claimsUser = this.User as ClaimsPrincipal;
-            var claims = claimsUser.Claims.ToList();
+            //// need to logout/login again to load claims
+            //var claimsUser = this.User as ClaimsPrincipal;
+            //var claims = claimsUser.Claims.ToList();
             return _db.Cars.ToList();         
         }
 
+        //[Authorize(Users='bob')]
+        //[Authorize(Roles='bob')]
+        // [Authorize]
         public HttpResponseMessage PostCars(Car car)
         {
+            // var claimsUser = this.User as ClaimsPrincipal;
+            //if (!claimsUser.HasClaim("CanEditCars", "true")) {
+            //    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "None Shall Pass");
+            //}
+
             if (ModelState.IsValid) {
                 if (car.Id == 0) {
                     _db.Cars.Add(car);
@@ -44,13 +52,12 @@ namespace CarDealership.API
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState);
         }
 
-
         public Car GetCar(int id)
         {
             return _db.Cars.Find(id);
         }
 
-
+        // [Authorize]
         public void Delete(int id)
         {
             var original = _db.Cars.Find(id);

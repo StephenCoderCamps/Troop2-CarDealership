@@ -1,9 +1,8 @@
 ﻿    <div class="container">
     <h2>Showroom</h2>
-
-        <form >
-            <input ng-keyup="mySearch = count + 1" ng-init="">
-        </form>
+    <form>
+        <input ng-model="main.search" />
+    </form>
     <table ng-cloak="true" class="table table-responsive">
         <thead>
             <tr>
@@ -31,17 +30,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="car in main.cars" ngShow ([item]filter: >
-                <td>{{car.Make}}</td>
-                <td>{{car.Model}}</td>
-                <td>{{car.Price|currency}}</td>
-                <td><img ng-src="{{car.Picture}}" /></td>
-                <td>{{car.BriefDescription}}</td>
-                <td>{{car.FullDescription}}</td>
-                <td>
-                    <a href="/deleteCar/{{car.Id}}">Delete</a>
+            <tr ng-controller="MenuController as menu" ng-repeat="car in main.cars|filter:main.filterCars">
+                <td>{{car.make}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.price|currency}}</td>
+                <td><img ng-src="{{car.picture}}" /></td>
+                <td>{{car.briefDescription}}</td>
+                <td>{{car.fullDescription}}</td>
+                <td ng-if="menu.showLogin()">
+                    <a href="/deleteCar/{{car.id}}">Delete</a>
                     <br />
-                    <a href="/editCar/{{car.Id}}">Edit</a>
+                    <a href="/editCar/{{car.id}}">Edit</a>
                 </td>
             </tr>
 
