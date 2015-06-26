@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    angular.module('CarApp', ['ngResource', 'ngRoute'])
+    angular.module('CarApp', ['ngResource', 'ngRoute', 'ui.bootstrap'])
         .constant('CAR_API', '/api/cars/:id')
         .config(function ($routeProvider, $locationProvider) {
 

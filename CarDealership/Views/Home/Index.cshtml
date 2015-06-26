@@ -5,21 +5,50 @@
     <title></title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <link href="~/Content/SlateStyle.css" rel="stylesheet" />
     <base href="/" />
 </head>
 
 
 <body ng-controller="CarListController as main">
 
-
-    <div class="container">
+    <!-- begin nav menu -->
+    <div role="navigation" class="navbar navbar-default navbar-fixed-top" id="blah">
+        <div class="container">
+            <div class="navbar-header" dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-success navbar-toggle btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled" data-toggle="collapse" data-target=".navbar-collapse" ng-init="navCollapsed = true"
+                        ng-click="navCollapsed = !navCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="brandbbb" class="navbar-brand" href="~/">
+                    Rich People DealerShip
+                </a>
+            </div>
+            <div id="menu" collapse="navCollapsed" class="navbar-collapse collapse navbar-responsive-collapse">
+                {{menu.showLogin()}}
+                <ul ng-controller="MenuController as menu" id="menucenter" role="menu" class="nav navbar-nav navbar-center">
+                    <li class="nav">
+                        <a href="/listCar"> Home </a>
+                    </li>
+                    <li class="nav" ng-if="menu.showLogin()">
+                        <a href="/addCar"> Add Car </a>
+                    </li>
+                    <li ng-if="!menu.showLogin()">
+                        <a href="/loginPage">Login</a>
+                    </li>
+                    <li ng-if="menu.showLogin()">
+                        <a ng-click="menu.logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> <!-- end nav menu -->
     
-        <a href="/listCar"> Home </a>
-        <br />
-        <a href="/addCar"> Add Car </a>
-        <a href="/loginPage">Login</a>
-        <div ng-view></div>
-    </div>
+        <div ng-view class="container-fluid"></div>
 
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>

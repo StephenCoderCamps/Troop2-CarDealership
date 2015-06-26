@@ -2,8 +2,16 @@
 
     angular.module('CarApp').controller('CarListController', function (CAR_API, $resource, $location) {
         var self = this;
-        var Car = $resource(CAR_API);
+        var Car = $resource(CAR_API, {}, {
+            'get': {
+                method: 'GET',
+                headers: {
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token')
+                }
+            }
+        });
         self.cars = Car.query();
+
 
         self.addCar = function () {
             var newCar = new Car({
@@ -66,12 +74,27 @@
             $http.post('/Token', data,
             {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            },
-            function (result) {
-                debugger
-            });
+            }).success(
+                function (result) {
+                sessionStorage.setItem('userToken', result.access_token);
+                $location.path('/');
+                });
         }
 
 
+    });
+
+    angular.module('CarApp').controller('MenuController', function ($location, $http) {
+        var self = this;
+
+        self.showLogin = function () {
+            return sessionStorage.getItem('userToken');
+        };
+
+        self.logout = function () {
+            sessionStorage.removeItem('userToken');
+            $location.path('/');
+
+        };
     });
 })();

@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*background-color: #2b2828;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,4 +24,89 @@ textarea {
 img {
 width: 300px;
 
+}
+
+#menu {
+ width: 100%;
+  font-size: 23px; 
+ font-family: Segoe Print, arial;
+ font-weight: bold;
+ text-align: center;
+ text-shadow: 3px 2px 3px #333333;
+}
+#menu ul {
+    height: auto;
+    padding: 0px -50px;
+    margin: 0px;
+    align-content: center;
+}
+ #menu li { 
+display: inline; 
+padding-left: 40px;
+padding-right: 40px; 
+} 
+#menu a {
+    text-decoration: none;
+    color: #009900;
+}
+#menu a:hover {
+    color: #F90;
+    background-color: #FFF;
+}
+#menucenter {
+    text-align: center;
+    float: none;
+    vertical-align: top;
+}
+
+
+ p {
+   font-family: segoe, arial;
+   text-shadow: 1px 1px 3px #000000;
+   color: #ffffff;
+   font-size: 18pt;
+}
+ h1 {
+   color: #33cc33;
+   text-shadow: 4px 3px 4px #333333;
+   font-size: 32pt;
+   padding-top: 55px;
+   align-items: center;
+   text-align: center;
+   display: inline-block;
+   float: none;
+   vertical-align: top;
+   width: 100%;
+}
+ h2 {
+   text-shadow: 4px 3px 4px #ffff99;
+   font-size: 24pt;
+}
+ h3 {
+    font-size: 12pt;
+}
+
+ footer {
+     color: white;
+     font-size: 15pt;
+     -webkit-text-stroke: 0.5px black;
+     font-weight: bold;
+ }
+a {
+    font-weight: bold;
+}
+a { 
+    text-decoration: none; color: #FFF; text-shadow: 1px 1px 3px #000000; 
+}
+a:visited { 
+    text-decoration: none; 
+}
+a:hover { 
+    text-decoration: none; color:#ff6a00; 
+}
+a:focus { 
+    text-decoration: none; 
+}
+a:hover, a:active { 
+    text-decoration: none; 
 }
