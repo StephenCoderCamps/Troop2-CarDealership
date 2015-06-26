@@ -1,37 +1,15 @@
 ﻿(function () {
 
-    angular.module('CarApp').controller('CarListController', function (CAR_API, $resource, $location, $http) {
+    angular.module('CarApp').controller('CarListController', function (CAR_API, $resource, $location, $http, CarService) {
         var self = this;
 
-       
-        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem('userToken');
-        var Car = $resource(CAR_API);
-        self.cars = Car.query();
-
-
-        self.addCar = function () {
-            var newCar = new Car({
-                Make: self.newCar.make,
-                Model: self.newCar.model,
-                Price: self.newCar.price,
-                Picture: self.newCar.picture,
-                BriefDescription: self.newCar.briefDescription,
-                FullDescription: self.newCar.fullDescription
-            });
-            newCar.$save(function (result) {
+        this.cars = CarService.getCars();
+        this.addCar = function () {
+            CarService.addCar(self.newCar).then(function () {
                 $location.path('/');
             });
-        }
+        };
 
-        self.editCar = function (original) {
-            original.make = car.make;
-            original.model = car.model;
-            original.price = car.price;
-            original.picture = car.picture;
-            original.briefDescription = car.briefDescription;
-            original.fullDescription = car.fullDescription;
-            original.$save();
-        }
         self.filterCars = function (car) {
             if (!self.search) {
                 return true;
@@ -39,28 +17,25 @@
             return car.model.toLowerCase().startsWith(self.search.toLowerCase()) || car.make.toLowerCase().startsWith(self.search.toLowerCase());
         };
     });
-    angular.module('CarApp').controller('CarDeleteController', function (CAR_API, $resource, $location, $routeParams) {
-        var self = this;
-        var Car = $resource(CAR_API);
-        self.car = Car.get({ id: $routeParams.id });
 
+    angular.module('CarApp').controller('CarDeleteController', function (CAR_API, $resource, $location, $routeParams, CarService) {
+        var self = this;
+        self.car = CarService.getCar($routeParams.id);
         self.deleteCar = function () {
-            Car.remove({ id: $routeParams.id }, function () {
+            CarService.deleteCar($routeParams.id).then( function () {
                 $location.path('/');
             });
         }
     });
-    angular.module('CarApp').controller('CarEditController', function (CAR_API, $resource, $location, $routeParams) {
+    angular.module('CarApp').controller('CarEditController', function (CAR_API, $resource, $location, $routeParams, CarService) {
         var self = this;
-        var Car = $resource(CAR_API);
-        self.car = Car.get({ id: $routeParams.id });
+        self.car = CarService.getCar($routeParams.id);
 
-        self.editCar = function () {
-            self.car.$save(function () {
+        this.editCar = function () {
+            CarService.editCar(self.car).then(function () {
                 $location.path('/');
             });
         };
-
     });
     angular.module('CarApp').controller('LoginController', function ($location, $http) {
         var self = this;
@@ -72,8 +47,8 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).success(
                 function (result) {
-                sessionStorage.setItem('userToken', result.access_token);
-                $location.path('/');
+                    sessionStorage.setItem('userToken', result.access_token);
+                    $location.path('/');
                 });
         }
 
