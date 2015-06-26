@@ -1,15 +1,11 @@
 ﻿(function () {
 
-    angular.module('CarApp').controller('CarListController', function (CAR_API, $resource, $location) {
+    angular.module('CarApp').controller('CarListController', function (CAR_API, $resource, $location, $http) {
         var self = this;
-        var Car = $resource(CAR_API, {}, {
-            'get': {
-                method: 'GET',
-                headers: {
-                    Authorization: 'Bearer ' + sessionStorage.getItem('token')
-                }
-            }
-        });
+
+       
+        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem('userToken');
+        var Car = $resource(CAR_API);
         self.cars = Car.query();
 
 

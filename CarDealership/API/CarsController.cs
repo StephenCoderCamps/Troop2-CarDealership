@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 
 namespace CarDealership.API
@@ -14,6 +15,9 @@ namespace CarDealership.API
 
         public IList<Car> GetCars()
         {
+            // need to logout/login again to load claims
+            var claimsUser = this.User as ClaimsPrincipal;
+            var claims = claimsUser.Claims.ToList();
             return _db.Cars.ToList();         
         }
 
